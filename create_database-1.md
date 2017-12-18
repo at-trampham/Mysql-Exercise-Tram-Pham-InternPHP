@@ -7,11 +7,11 @@ USE `train-mysql` ;
 ```
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `fullname` VARCHAR(255) NOT NULL,
+  `full_name` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL UNIQUE,
   `rank` TINYINT(4) NOT NULL,
   `is_active` TINYINT(1) NULL,
-  `created_at` TIMESTAMP NULL,
+  `create_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 ```
@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `target_id` INT(11) NOT NULL,
   `user_id` INT(11) NOT NULL,
   `comment` TEXT NOT NULL,
-  `created_at` TIMESTAMP NULL,
-  `updated_at` TIMESTAMP NULL,
+  `create_at` TIMESTAMP NULL,
+  `update_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_comment_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_comment_user1`
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `follow` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `from_user_id` INT(11) NOT NULL,
   `to_user_id` INT(11) NOT NULL,
-  `created_at` TIMESTAMP NULL,
+  `create_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_follow_user1_idx` (`from_user_id` ASC),
   INDEX `fk_follow_user2_idx` (`to_user_id` ASC),
@@ -61,7 +61,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `category` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
-  `created_at` TIMESTAMP NULL,
+  `description` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 ```
@@ -75,8 +75,8 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `view` INT(11) NOT NULL,
   `is_active` TINYINT(1) NULL,
   `content` TEXT NULL,
-  `created_at` TIMESTAMP NULL,
-  `updated_at` TIMESTAMP NULL,
+  `create_at` TIMESTAMP NULL,
+  `update_at` TIMESTAMP NULL,
   INDEX `fk_blog_user_idx` (`user_id` ASC),
   INDEX `fk_blog_category1_idx` (`category_id` ASC),
   PRIMARY KEY (`id`),
@@ -104,8 +104,8 @@ CREATE TABLE IF NOT EXISTS `news` (
   `view` INT(11) NOT NULL,
   `is_active` TINYINT(1) NULL,
   `content` TEXT NULL,
-  `created_at` TIMESTAMP NULL,
-  `updated_at` TIMESTAMP NULL,
+  `create_at` TIMESTAMP NULL,
+  `update_at` TIMESTAMP NULL,
   INDEX `fk_blog_category1_idx` (`category_id` ASC),
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_blog_category10`
