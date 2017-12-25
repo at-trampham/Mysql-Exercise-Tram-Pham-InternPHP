@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   CONSTRAINT `fk_comment_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
-    ON DELETE NO CASCADE 
+    ON DELETE CASCADE 
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 ```
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `follow` (
   CONSTRAINT `fk_follow_user2`
     FOREIGN KEY (`to_user_id`)
     REFERENCES `user` (`id`)
-    ON DELETE NO CASCADE 
+    ON DELETE CASCADE 
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 ```
@@ -83,12 +83,12 @@ CREATE TABLE IF NOT EXISTS `blog` (
   CONSTRAINT `fk_blog_user`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
-    ON DELETE NO CASCADE 
+    ON DELETE CASCADE 
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_blog_category1`
     FOREIGN KEY (`category_id`)
     REFERENCES `category` (`id`)
-    ON DELETE NO CASCADE 
+    ON DELETE CASCADE 
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   CONSTRAINT `fk_blog_category10`
     FOREIGN KEY (`category_id`)
     REFERENCES `category` (`id`)
-    ON DELETE NO CASCADE 
+    ON DELETE CASCADE 
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
